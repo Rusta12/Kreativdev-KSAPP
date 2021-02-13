@@ -1,0 +1,67 @@
+===== scripts ======
+ ====== js =======
+
+
+ # Условие выбора если выбрано определенное значение в поле 1 то поле 2 не редактируемое
+
+ function on_field_changed(field) {
+    if (field.field_name === 'field1') {
+        field.owner.field2.read_only = field.value === 1;
+    }
+}
+# При необходимости вы можете активировать атрибут read_only поля в обработчике события on_edit_form_created.
+
+# Условие фильтра выбора если в поле выбрана таблица, 
+которая имеет привязку по id с другой будут отображаны записи согласно выбранной привязки по id
+
+function on_field_select_value(field, lookup_item) {
+    if (field.field_name === 'city_id') {
+        lookup_item.set_where({region_id: field.owner.region_id.value});
+    }
+}
+
+=== с несколькими полями одновременно == 
+function on_field_select_value(field, lookup_item) {
+    if (field.field_name === 'city_id') {
+        lookup_item.set_where({region_id: field.owner.region_id.value});}
+    if (field.field_name === 'raion_id') {
+        lookup_item.set_where({okrug_id: field.owner.okrug.value});}
+}
+
+# Когда пользователь нажимает кнопку справа от поля ввода или использует опережающий ввод, приложение создает копию элемента поиска поля и запускает on_field_select_value событие. Используйте, on_field_select_valueчтобы указать поля, которые будут отображаться, настроить фильтры для элемента поиска, прежде чем он будет открыт.
+
+function on_field_select_value(field, lookup_item) {
+    if (field.field_name === 'customer') {
+        lookup_item.set_where({lastname__startwith: 'B'});
+        lookup_item.view_options.fields = ['firstname', 'lastname', 'address', 'phone'];
+    }
+}
+
+function on_field_select_value(field, lookup_item) {
+    if (field.field_name === 'id_shooting_do') {
+        lookup_item.set_where({status_id: '1'});}
+}
+
+
+# активные ссылки 
+
+function on_field_get_html(field) {
+  if (field.field_name === 'media') {
+      return '<a href="' + field.owner.media.value + '" target="_blank">' + field.value + '</a>';
+  }
+}
+
+# как связать 2 таблицы 
+https://jam-py.com/docs/how_to/how_to_link_two_tables.html?highlight=show_invoice
+
+
+# условие для цвета
+function process_table_row (row, item) {
+    if (item.archiv.value === true) {row.css ('background-color', 'red');}
+    if (item.archiv.value === false) {row.css ('background-color', 'gray');} 
+}
+
+function on_view_form_created(item) {
+    item.table_options.striped = false;
+    item.table_options.row_callback = process_table_row;
+}
