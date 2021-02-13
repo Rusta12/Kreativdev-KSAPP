@@ -1,4 +1,4 @@
-# Kreativik-KSAPP
+# Kreativik-KSAPP (альфа версия)
 
 <p align="center">
   <img src="https://github.com/Rusta12/kreativdev-ksapp/blob/main/KSAPP2.jpg"/>
