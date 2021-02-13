@@ -14,7 +14,7 @@ ____
 </p>
 
 
-### Интерфейс фреймворк Jam.py
+### Интерфейс фреймворк [Jam.py](https://jam-py.com/)
 
 <p align="center">
   <img src="https://github.com/Rusta12/kreativdev-ksapp/blob/main/screen.png"/>
