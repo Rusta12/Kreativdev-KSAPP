@@ -12,10 +12,11 @@ ____
 <p align="center">
   <img src="https://github.com/Rusta12/kreativdev-ksapp/blob/main/Psql/BD.png"/>
 </p>
-
+____
 
 ### Интерфейс фреймворк [Jam.py](https://jam-py.com/)
 
 <p align="center">
   <img src="https://github.com/Rusta12/kreativdev-ksapp/blob/main/screen.png"/>
 </p>
+____
